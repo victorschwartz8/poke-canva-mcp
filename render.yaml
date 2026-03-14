@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: poke-canva-mcp
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python src/server.py
+    envVars:
+      - key: CANVA_CLIENT_ID
+        sync: false
+      - key: CANVA_CLIENT_SECRET
+        sync: false
+      - key: CANVA_REFRESH_TOKEN
+        sync: false
