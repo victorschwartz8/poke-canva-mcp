@@ -26,7 +26,7 @@ import httpx
 
 AUTHORIZE_URL = "https://www.canva.com/api/oauth/authorize"
 TOKEN_URL = "https://api.canva.com/rest/v1/oauth/token"
-REDIRECT_URI = "http://localhost:8090/callback"
+REDIRECT_URI = "http://127.0.0.1:8090/callback"
 SCOPES = (
     "design:content:read design:content:write design:meta:read "
     "brandtemplate:content:read brandtemplate:meta:read "
@@ -83,7 +83,7 @@ def main():
     webbrowser.open(auth_url)
 
     # Start local server to receive callback
-    server = HTTPServer(("localhost", 8090), CallbackHandler)
+    server = HTTPServer(("127.0.0.1", 8090), CallbackHandler)
     print("Waiting for callback on http://localhost:8090/callback ...")
     while auth_code is None:
         server.handle_request()
